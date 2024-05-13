@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+body {
+  margin: 0;
+  padding: 0;
+  background: #F9FAFC;
+  font-family: 'Inter';
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    'sidebar header header header'
+    'sidebar main main main';
+  height: 100vh;
+}
+
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #FFF9EB;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px 10px 30px;
+  margin: 0 0 16px 10px;
+}
+
+.h6-title {
+  color: black;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.sidebar-title>span {
+  font-weight: 300;
+  font-size: 16px;
+  display: none;
+}
+
+.blueNav {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+/* dari sini yang diubah */
+.sidebar-list-item {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  padding-left: 35px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4%;
+}
+
+.nav-link.dashboard {
+  background-color: #FFECC1;
+  color: black;
+  font-size: 16px;
+  
+  padding-left: 35px;
+  font-weight: 600;
+}
+
+.nav-link.not {
+  color: #CDC0A2;
+  font-size: 16px;
+  font-weight: 600;
+}
+.nav{
+  margin-bottom: 64px;
+}
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4%;
+}
+/* sampai ini yang diubah */
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+}
+
+#logoAdino {
+  width: 300;
+  height: 100;
+}
+
+#bottomNav {
+  bottom: 0px;
+  position: absolute;
+}
+  
+
+/* ---------- MAIN ---------- */
+#name{
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.textCard{
+  margin-top: 20px;
+}
+
+.value{
+  font-weight: 700;
+  font-size: 40px;
+}
+
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 100px 20px 100px;
+}
+
+.div-main-container {
+  background-color: #DEDFE9;
+  width: 100%;
+  height: 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+  
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.2fr 3fr;
+      grid-template-areas: 'header' 'main';
+  }
+  #logoutNav {
+    position: absolute;
+    bottom: 45px;
+    display: flex;
+  }
+  .logout-container {
+    display: flex;
+    align-items: center;
+}
+
+.logout-container img {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+  #sidebar {
+    display: none;
+  }
+  .blueNav{
+    z-index: -1;
+   
+  }
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 20px 20px;
+    margin-bottom: 30px;
+  }
+  .sidebar-title>span {
+    display: none;
+  }
+  .menu-icon {
+    display: inline;
+  }
+  .sidebar-title>span {
+    display: inline;
+  }
+  .div-main-container {
+    height: auto;
+  }
+  .main-container {
+    padding: 20px; /* Ubah padding untuk menyembunyikan ruang kosong di kiri */
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .main-container {
+    padding: 20px;
+  }
+  #logoutNav {
+    position: absolute;
+    bottom: 45px;
+    display: flex;
+  }
+  .logout-container {
+    display: flex;
+    align-items: center;
+}
+
+.logout-container img {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+  #sidebar {
+    display: none;
+  }
+  .blueNav{
+    z-index: -1;
+   
+  }
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 20px 20px;
+    margin-bottom: 30px;
+  }
+  .sidebar-title>span {
+    display: none;
+  }
+  .menu-icon {
+    display: inline;
+  }
+  .sidebar-title>span {
+    display: inline;
+  }
+  .div-main-container {
+    height: auto;
+  }
+  .main-container {
+    padding: 20px; /* Ubah padding untuk menyembunyikan ruang kosong di kiri */
+  }
+}
