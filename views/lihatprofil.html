@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profil</title>
+    <style>
+        /* Gaya tampilan umum */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Gaya tampilan sidebar */
+        .sidebar {
+            background-color: #2d80fc;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        /* Gaya tampilan konten utama */
+        .content {
+            flex: 1;
+            padding: 30px; /* Jarak dari tepi konten utama */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Gaya tampilan bagian profil */
+        .profile-section {
+            background-color: #f2f2f2;
+            padding: 30px; /* Jarak dari tepi bagian profil */
+            border-radius: 5px;
+            margin-bottom: 30px; /* Jarak dengan tombol */
+        }
+        .profile-section input[type="text"] {
+            width: 100%;
+            padding: 15px; /* Jarak dari tepi input field */
+            margin-bottom: 20px; /* Jarak antar input field */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        /* Gaya tampilan area tanda tangan */
+        .profile-section .signature-area {
+            height: 200px; /* Tinggi area tanda tangan */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 20px; /* Jarak dengan input password */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        /* Gaya tampilan input password */
+        .profile-section .password-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px; /* Jarak dari atas */
+        }
+        .profile-section .password-inputs input[type="password"] {
+            width: 48%;
+            padding: 15px; /* Jarak dari tepi input field */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        /* Gaya tampilan tombol log out */
+        .logout-button {
+            align-self: flex-start; /* Mengatur posisi di kiri */
+            padding: 10px 20px; /* Jarak dari tepi tombol */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar dengan menu navigasi -->
+        <div class="sidebar">
+            <h3>SISMI</h3>
+            <ul>
+                <li>Generate Surat</li>
+                <li>Kelola Surat</li>
+                <li>Disposisi Surat</li>
+            </ul>
+        </div>
+
+        <!-- Konten utama dengan bagian profil -->
+        <div class="content">
+            <div class="profile-section">
+                <!-- Input field untuk nama lengkap -->
+                <label for="username">Nama Lengkap:</label>
+                <input type="text" placeholder=".....................................................................................">
+
+                <!-- Input field untuk nomor induk mahasiswa (NIM) -->
+                <label for="nim">Nomor Induk Mahasiswa (NIM):</label>
+                <input type="text" placeholder=".....................................................................................">
+
+                <!-- Input field untuk alamat -->
+                <label for="alamat">Alamat:</label>
+                <input type="text" placeholder=".....................................................................................">
+
+                <!-- Area untuk mengunggah tanda tangan -->
+                <div class="signature-area">Pilih file untuk tanda tangan</div>
+
+                <!-- Input field untuk password lama dan baru -->
+                <div class="password-inputs">
+                    <label for="password_lama">Password Lama:</label>
+                    <input type="password" placeholder=".....................................................................................">
+                    <label for="password_baru">Password Baru:</label>
+                    <input type="password" placeholder=".....................................................................................">
+                </div>
+            </div>
+
+            <!-- Tombol log out -->
+            <button class="logout-button">Log Out</button>
+        </div>
+    </div>
+</body>
+</html>
