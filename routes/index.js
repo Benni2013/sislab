@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const changePass = require('./changePass')
+const server = {}
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+server.changePass = changePass
 
-module.exports = router;
+
+module.exports = server
