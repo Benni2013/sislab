@@ -206,7 +206,46 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.form-group {
+  margin-bottom: 20px;
+}
 
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group .file-upload input[type="file"] {
+  width: 80%;
+  padding: 10px ;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group .file-upload {
+  border: 2px dashed #ccc;
+  padding: 20px ;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+}
+
+.form-group .file-upload label {
+  display: block;
+  color: #1c3faa;
+}
+
+.btn-add {
+  background-color: #1c3faa;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .logo h2 {
   margin-bottom: 20px ;
@@ -253,7 +292,14 @@ body {
 
 .logout a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
+  font-size: 18px;
+  justify-content: center;
+}
+
+.logout span {
+  text-decoration: none;
+  color: #ffffff;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -261,7 +307,10 @@ body {
 }
 
 .sidebar {
-  background-color: #f0f4ff;
+  background: linear-gradient(167deg, #FFF 8.41%, #8AA0E5 95.92%);
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   width: 270px;
   padding: 20px;
   display: flex;
