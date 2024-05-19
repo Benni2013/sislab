@@ -2,37 +2,34 @@
 const {sequelize, DataTypes, err} = require('sequelize')
 const db = require('../config/dbconfig.js')
 
-var user = db.define('user',{
-    id_user : {
-        type        : DataTypes.INTEGER,
+var surat_masuk = db.define('surat_masuk',{
+    no_surat_masuk : {
+        type        : DataTypes.varchar,
         allowNull   : false,
         primaryKey  : true,
-        autoIncrement: true
+        autoIncrement: false
     },
-    name : {
-        type        : DataTypes.STRING,
+    id_user : {
+        type        : DataTypes.INTEGER,
         allowNull   : false
     },
-    email : {
-        type        : DataTypes.STRING,
+    nama_surat_masuk : {
+        type        : DataTypes.varchar,
         allowNull   : false
     },
-    password :{
-        type        : DataTypes.STRING,
+    file_surat_masuk :{
+        type        : DataTypes.varchar,
         allowNull   : false
     },
-    role :{
-        type        :DataTypes.INTEGER,
+    created_at :{
+        type        :DataTypes.DATEONLY,
         allowNull   :false
-    },
-    created_at : {
-        type        : DataTypes.DATEONLY,
-        allowNull   : false
     },
     updated_at : {
         type        : DataTypes.DATEONLY,
         allowNull   : false
-    }
+    },
+
 }, {
     freezeTableName : true,
     timestamps  : true,
