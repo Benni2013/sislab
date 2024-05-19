@@ -21,6 +21,18 @@ var user = db.define('user',{
         type        : DataTypes.STRING,
         allowNull   : false
     },
+    ttd :{
+        type        : DataTypes.STRING,
+        allowNull   : false
+    },
+    nomor_induk :{
+        type        : DataTypes.STRING,
+        allowNull   : false
+    },
+    alamat :{
+        type        : DataTypes.STRING,
+        allowNull   : false
+    },
     role :{
         type        :DataTypes.INTEGER,
         allowNull   :false
