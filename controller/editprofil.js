@@ -9,7 +9,12 @@ const bcrypt = require('bcrypt')
 const controller = {}
 
 const showEdit = async (req,res) =>{
-    res.render('editprofil')
+    try {
+        res.render('editprofil')
+    } catch (error) {
+        console.log("error", error);
+        res.status(500).json({message: error})
+    }
 }
 
 module.exports = {
