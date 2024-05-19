@@ -1,5 +1,6 @@
 const modelSuratMasuk = require('../models/surat_masuk')
 // const { now } = require('sequelize/types/utils');
+const {
     or,
     where
 } = require('sequelize');
