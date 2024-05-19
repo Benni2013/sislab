@@ -8,6 +8,10 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt')
 const controller = {}
 
+const formubahpassword = async (req,res) => {
+    res.render ('ubahpassword')
+}
+
 const ubahpassword = async (req, res) => {
     try {
         const id_admin = 1
@@ -67,5 +71,6 @@ const ubahpassword = async (req, res) => {
 }
 
 module.exports = {
-    ubahpassword
+    ubahpassword,
+    formubahpassword
 }
