@@ -14,7 +14,7 @@ const formubahpassword = async (req,res) => {
 
 const ubahpassword = async (req, res) => {
     try {
-        const id_admin = 1
+        const id_user = 1
         const {
             password,
             newpassword
@@ -28,7 +28,7 @@ const ubahpassword = async (req, res) => {
         }
         const findAkun = await modeluser.findOne({
             where: {
-                id: id_admin
+                id_user: id_user
             }
         })
         if (!findAkun) {
@@ -53,7 +53,7 @@ const ubahpassword = async (req, res) => {
           password: encryptPass
         }, {
             where: {
-                id: id_admin
+                id_user: id_user
             }
         })
         return res.status(200).json({
