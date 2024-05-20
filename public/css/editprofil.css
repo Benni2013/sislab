@@ -1,6 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 body{
     margin: 0;
     padding: 0;
+    font-family: 'Lobster';
+}
+
+.main{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.inmain{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
 }
 
 .header {
@@ -13,18 +30,32 @@ body{
     align-items: center;
   }
   
-  .menu-icon {
+.menu-icon {
     display: none;
   }
 
 .sidebar{
-    height: 120%;
-    width: 25%;
-    background: linear-gradient(167deg, #FFF 8.41%, #8AA0E5 95.92%);
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(160deg, #fbfafa 8.41%, #8AA0E5 95.92%);
     border-radius: 0 3% 3% 0;
 }  
 
-#sislab{
+.menu{
+    margin-left: 10%;
+    color: black;
+}
+
+.menu a{
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+
+#bot {
+    margin-top: 50%;
+}
+
+/* #sislab{
     color: #FFF;
     -webkit-text-stroke-width: 5px;
     -webkit-text-stroke-color: #aa9b9b;
@@ -34,29 +65,23 @@ body{
     font-weight: 400;
     line-height: normal;
     padding: 1% 0 0 19%;
-}
+} */
 
-#bottomNav{
-    /* padding-top: 90%; */
+/* #bottomNav{
+    padding-top: 90%;
     bottom: 0;
     position: absolute;
-}
+} */
 
-.sidebar-list-item {
+/* .sidebar-list-item {
     font-size: 14px;
     margin: 4px 16px 4px 16px;
     justify-content: center;
     align-items: center;
     padding-bottom: 4%;
     padding-left: 4%;
-}
+} */
    
-.main{
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-
 .form-container {
     flex: 1;
     display: flex;
