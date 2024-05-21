@@ -62,7 +62,7 @@ const checklogin = async (req, res) => {
         nomor_induk: foundUser.nomor_induk, 
         role: foundUser.role 
       },
-      process.env.JWT_SECRET_TOKEN || 'token_kunci',
+      process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: 86400 }
     );
 
@@ -76,6 +76,7 @@ const checklogin = async (req, res) => {
       password: foundUser.password
     }
 
+    
     // Set cookie dengan token
     res.cookie("token", token, { httpOnly: true });
 
@@ -83,7 +84,7 @@ const checklogin = async (req, res) => {
     if (foundUser.role === 'mahasiswa') {
       // return res.redirect("/index.hbs");
       // return res.status(200).json({ message: "mahasiswa berhasil login" })
-      return res.render('testLogin', { data }); //masih mengandalkan render, blm redirect pada path url
+      return res.redirect('/showeditProfil') //masih mengandalkan render, blm redirect pada path url
     } else if (foundUser.role === "admin") {
       // const name = username
       // return res.redirect("testLogin", name);
