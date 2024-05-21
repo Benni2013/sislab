@@ -71,10 +71,12 @@ const checklogin = async (req, res) => {
 
     // Redirect ke halaman sesuai dengan peran pengguna
     if (foundUser.role === 'mahasiswa') {
-      return res.redirect("/index.hbs");
+      // return res.redirect("/index.hbs");
+      return res.status(200).json({ message: "mahasiswa berhasil login" })
     } else if (foundUser.role === "admin") {
-      const name = username
-      return res.redirect("testLogin", name);
+      // const name = username
+      // return res.redirect("testLogin", name);
+      return res.status(200).json({ message: "admin berhasil login" })
     }
 
     // Jika tidak ada peran yang cocok, berikan respons standar
