@@ -13,4 +13,20 @@ body {
 }
 .password-toggle {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+}
+
+.password-toggle:hover {
+    background-color: #e5e7eb;
+    border-radius: 50%;
+}
+  
+.password-toggle.active {
+  background-color: #abadb2;
+  border-radius: 50%;
 }
