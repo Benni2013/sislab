@@ -37,13 +37,12 @@ body{
 .sidebar{
     height: 100%;
     width: 30%;
-    background: linear-gradient(160deg, #fbfafa 8.41%, #8AA0E5 95.92%);
+    background: linear-gradient(160deg, #ffffff 5.41%, #244aba 95.92%);
     border-radius: 0 3% 3% 0;
 }  
 
 .menu{
-    margin-left: 10%;
-    color: black;
+    margin-left: 15%;
 }
 
 .menu a{
@@ -116,7 +115,7 @@ li {
 }
 
 .sidebar ul li:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: navy;
     cursor: pointer;
     height: 55px;
     width: 370px;
@@ -128,4 +127,12 @@ li {
 .sidebar-responsive {
     display: inline !important;
     position: absolute;
+}
+
+.side{
+    color: #ffffff !important;
+}
+
+.side img{
+    filter: invert(100%);
 }
