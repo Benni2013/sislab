@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault()
         const password = document.getElementById('password').value
         const newpassword = document.getElementById('newpassword').value
-
+        console.log("pacah");
         const response = await fetch('/ubahpassword', {
             method: 'POST',
             headers: {
