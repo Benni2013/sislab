@@ -26,8 +26,7 @@ body {
     border-radius: 50%;
 }
   
-  .password-toggle.active {
-    background-color: #abadb2; /* Warna latar belakang setelah diklik (putih) */
-    border-radius: 50%;
-
-  }
+.password-toggle.active {
+  background-color: #abadb2; /* Warna latar belakang setelah diklik (putih) */
+  border-radius: 50%;
+}
