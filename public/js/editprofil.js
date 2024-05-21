@@ -2,37 +2,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     const form = document.querySelector('form')
     form.addEventListener('submit', async (event) => {
         event.preventDefault()
-        const password = document.getElementById('password').value
-        const newpassword = document.getElementById('newpassword').value
+        const nama = document.getElementById('nama').value
+        const nomor_induk = document.getElementById('nomor_induk').value
+        const alamat = document.getElementById('alamat').value
 
-        const response = await fetch('/ubahpassword', {
+        const response = await fetch('/updateprofil', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
-                password: password,
-                newpassword: newpassword
+                nama : nama,
+                nomor_induk: nomor_induk,
+                alamat: alamat
             })
         })
 
-        const dataUbahPassword = await response.json()
-        console.log(dataUbahPassword);
-        if (dataUbahPassword.success) {
-
-            // Informasi login sukses
+        const dataeditprofil = await response.json()
+        console.log(dataeditprofil);
+        if (dataeditprofil.success) { 
             Swal.fire({
-                title: dataUbahPassword.message,
+                title: dataeditprofil.message,
                 timer: 1500,
                 icon: "success"
                     });
-                    // window.location.href='/ubahpassword'
-            // Fetch data setelah login sukses
-            
-        } else {
-            // Informasi login gagal
+        }else {
             Swal.fire({
-                title: dataUbahPassword.message,
+                title: dataeditprofil.message,
                 timer: 1500,
                 icon: "error"
             });
