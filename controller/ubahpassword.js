@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt')
 const controller = {}
 
 const formubahpassword = async (req,res) => {
-    res.render ('ubahpassword')
+    res.render('ubahpassword')
 }
 
 const ubahpassword = async (req, res) => {
