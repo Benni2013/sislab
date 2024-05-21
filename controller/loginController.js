@@ -84,12 +84,12 @@ const checklogin = async (req, res) => {
     if (foundUser.role === 'mahasiswa') {
       // return res.redirect("/index.hbs");
       // return res.status(200).json({ message: "mahasiswa berhasil login" })
-      return res.redirect('/showeditProfil') //masih mengandalkan render, blm redirect pada path url
+      return res.redirect('/lihatprofil') //masih mengandalkan render, blm redirect pada path url
     } else if (foundUser.role === "admin") {
       // const name = username
       // return res.redirect("testLogin", name);
       // return res.status(200).json({ message: "admin berhasil login" })
-      return res.render('testLogin', { data })  //masih mengandalkan render, blm redirect pada path url
+      return res.redirect('/lihatprofil')//masih mengandalkan render, blm redirect pada path url
     }
 
     // Jika tidak ada peran yang cocok, berikan respons standar

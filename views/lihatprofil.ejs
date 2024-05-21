@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/editprofil.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.15.0/dist/full.css" rel="stylesheet">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+     <!-- sidebar -->
+     <div class="main">
+        <div class = "sidebar">
+            <div class = "head" style="font-size: 80px; text-align: center; align-items: center; margin-top: 15%; padding-bottom: 20%; font-family: 'Lilita One', cursive; color: white; -webkit-text-stroke: 3px #000000 ;">SISLAB</div>
+              <ul class="menu">
+                <li>
+                  <a class="side">
+                  <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-4/32/generate-pdf-512.png" alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> -->
+                   Generate Surat
+                  </a>
+                </li>
+                <li>
+                  <a class="side">
+                    <img src="https://cdn2.iconfinder.com/data/icons/essential-web-3/50/document-content-article-letter-paper-512.png" alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> -->
+                    Kelola surat
+                  </a>
+                </li>
+                <li>
+                  <a class="side">
+                    <img src="https://cdn1.iconfinder.com/data/icons/miscellaneous-226-line/128/preparation_disposition_activity_task_project_checklist_document_presentation-64.png" alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg> -->
+                    Disposisi Surat
+                  </a>
+                </li>
+              </ul>
+    
+              <ul class="menu" id = "bot">
+                <li>
+                  <a class="side">
+                    <img src="https://cdn1.iconfinder.com/data/icons/materia-arrows-symbols-vol-8/24/018_320_door_exit_logout-64.png" alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> -->
+                   Log Out
+                  </a>
+                </li>
+              </ul>
+        </div>
+
+    <div class = "inmain">
+     <!-- header -->
+     <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-right d-flex" style="margin-left: auto;">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+                    <strong>MHS01</strong>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 8C21.2015 7.99949 18.4519 8.73298 16.0255 10.1273C13.599 11.5215 11.5808 13.5278 10.1721 15.9459C8.76335 18.364 8.0135 21.1092 7.99736 23.9077C7.98121 26.7061 8.69932 29.4598 10.08 31.894C11.0132 30.6812 12.2129 29.6992 13.5862 29.024C14.9595 28.3487 16.4697 27.9984 18 28H30C31.5303 27.9984 33.0405 28.3487 34.4139 29.024C35.7872 29.6992 36.9868 30.6812 37.92 31.894C39.3007 29.4598 40.0188 26.7061 40.0027 23.9077C39.9865 21.1092 39.2367 18.364 37.828 15.9459C36.4193 13.5278 34.401 11.5215 31.9746 10.1273C29.5482 8.73298 26.7985 7.99949 24 8ZM39.886 36.152C42.5601 32.6659 44.0065 28.3935 44 24C44 12.954 35.046 4 24 4C12.954 4 4.00002 12.954 4.00002 24C3.99342 28.3936 5.43983 32.666 8.11402 36.152L8.10402 36.188L8.81402 37.014C10.6898 39.207 13.0188 40.9672 15.6405 42.1733C18.2622 43.3793 21.1142 44.0026 24 44C28.0547 44.0075 32.0148 42.7758 35.35 40.47C36.7719 39.4876 38.0612 38.326 39.186 37.014L39.896 36.188L39.886 36.152ZM24 12C22.4087 12 20.8826 12.6321 19.7574 13.7574C18.6322 14.8826 18 16.4087 18 18C18 19.5913 18.6322 21.1174 19.7574 22.2426C20.8826 23.3679 22.4087 24 24 24C25.5913 24 27.1174 23.3679 28.2427 22.2426C29.3679 21.1174 30 19.5913 30 18C30 16.4087 29.3679 14.8826 28.2427 13.7574C27.1174 12.6321 25.5913 12 24 12Z" fill="black"/>
+                      </svg>
+                </a>         
+        </div>
+    </header>
+
+        <!-- Formulir untuk menampilkan profil pengguna -->
+        <div class="form-container p-4 flex-grow-1">
+            <form>
+                <div class="mb-3">
+                    <label>Nama Lengkap</label>
+                    <p><%= akun.name %></p>
+                </div>
+                <div class="mb-3">
+                    <label>Nomor Induk Mahasiswa (NIM)</label>
+                    <p><%= akun.nomor_induk %></p>
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <p><%= akun.email %></p>
+                </div>
+                <div class="mb-3">
+                    <label>Alamat</label>
+                    <p><%= akun.alamat %></p>
+                </div>
+                <a class="btn btn-primary" href="/showeditProfil">edit profile</a>
+                <a class="btn btn-primary" href="/ubahpassword">change password</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
