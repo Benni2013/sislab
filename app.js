@@ -21,10 +21,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/public',express.static(path.join(__dirname, 'public')));
 app.use('/', server.changePass);
 app.use('/', server.editprofil);
+app.use('/login', server.login)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
