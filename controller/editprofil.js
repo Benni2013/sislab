@@ -1,4 +1,4 @@
-const Swal = require('sweetalert2')
+
 const modeluser = require('../models/user')
 
 const {
