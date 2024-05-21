@@ -39,8 +39,8 @@ const showLupaPassword = async (req, res) => {
 const checklogin = async (req, res) => {
   const { username, password } = req.body;
   try {
-    // Menggunakan nama variabel lain untuk menyimpan hasil pencarian user
-    const foundUser = await modeluser.findOne({ where: { username } });
+    // Cari user berdasarkan kolom 'name'
+    const foundUser = await modeluser.findOne({ where: { nomor_induk: username } });
 
     if (!foundUser) {
       return res.status(404).json({ message: "User not found" });
@@ -56,12 +56,12 @@ const checklogin = async (req, res) => {
     // Buat token JWT
     const token = jwt.sign(
       { 
-        id: foundUser.id_user, 
+        id_user: foundUser.id_user, 
         email: foundUser.email, 
         name: foundUser.name, 
         nomor_induk: foundUser.username, 
         role: foundUser.role 
-        },
+      },
       process.env.JWT_SECRET_TOKEN || 'token_kunci',
       { expiresIn: 86400 }
     );
@@ -70,12 +70,15 @@ const checklogin = async (req, res) => {
     res.cookie("token", token, { httpOnly: true });
 
     // Redirect ke halaman sesuai dengan peran pengguna
-    if (foundUser.role === 0) {
-      return res.redirect("/index.hbs");
+    if (foundUser.role === 'mahasiswa') {
+      // return res.redirect("/index.hbs");
+      return res.status(200).json({ message: "mahasiswa berhasil login" })
     } else if (foundUser.role === "admin") {
-      return res.redirect("/admin/dashboard");
+      // const name = username
+      // return res.redirect("testLogin", name);
+      return res.status(200).json({ message: "admin berhasil login" })
     }
-    console.log(foundUser.role)
+
     // Jika tidak ada peran yang cocok, berikan respons standar
     res.status(200).send({ auth: true, token: token });
 
@@ -85,11 +88,12 @@ const checklogin = async (req, res) => {
   }
 };
 
+
 const lupaPassword = async (req, res) => {
   try {
     const { email, newPassword, confirmNewPassword } = req.body;
 
-    
+    // algoritma ganti password
 
     return res.redirect('/login');
   } catch (error) {
