@@ -1,134 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/editprofil.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* Gaya tampilan umum */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-
-        /* Gaya tampilan sidebar */
         .sidebar {
-            background-color: #2d80fc;
-            color: #ffffff;
-            padding: 20px;
-        }
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar li {
-            margin-bottom: 10px;
-        }
-
-        /* Gaya tampilan konten utama */
-        .content {
-            flex: 1;
-            padding: 30px; /* Jarak dari tepi konten utama */
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Gaya tampilan bagian profil */
-        .profile-section {
-            background-color: #f2f2f2;
-            padding: 30px; /* Jarak dari tepi bagian profil */
-            border-radius: 5px;
-            margin-bottom: 30px; /* Jarak dengan tombol */
-        }
-        .profile-section input[type="text"] {
-            width: 100%;
-            padding: 15px; /* Jarak dari tepi input field */
-            margin-bottom: 20px; /* Jarak antar input field */
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        /* Gaya tampilan area tanda tangan */
-        .profile-section .signature-area {
-            height: 200px; /* Tinggi area tanda tangan */
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-bottom: 20px; /* Jarak dengan input password */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-style: italic;
-            color: #999;
-        }
-
-        /* Gaya tampilan input password */
-        .profile-section .password-inputs {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px; /* Jarak dari atas */
-        }
-        .profile-section .password-inputs input[type="password"] {
-            width: 48%;
-            padding: 15px; /* Jarak dari tepi input field */
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        /* Gaya tampilan tombol log out */
-        .logout-button {
-            align-self: flex-start; /* Mengatur posisi di kiri */
-            padding: 10px 20px; /* Jarak dari tepi tombol */
+            height: 100vh; /* Mengatur tinggi sidebar menjadi 100% viewport height */
+            position: sticky;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
+    <title>Lihat Profil</title>
+</head>
 <body>
-    <div class="container">
-        <!-- Sidebar dengan menu navigasi -->
-        <div class="sidebar">
-            <h3>SISMI</h3>
-            <ul>
-                <li>Generate Surat</li>
-                <li>Kelola Surat</li>
-                <li>Disposisi Surat</li>
+
+    <!-- Header dengan menu navigasi dan profil pengguna -->
+    <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-right d-flex" style="margin-left: auto;">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+                    <strong>MHS01</strong>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 8C21.2015 7.99949 18.4519 8.73298 16.0255 10.1273C13.599 11.5215 11.5808 13.5278 10.1721 15.9459C8.76335 18.364 8.0135 21.1092 7.99736 23.9077C7.98121 26.7061 8.69932 29.4598 10.08 31.894C11.0132 30.6812 12.2129 29.6992 13.5862 29.024C14.9595 28.3487 16.4697 27.9984 18 28H30C31.5303 27.9984 33.0405 28.3487 34.4139 29.024C35.7872 29.6992 36.9868 30.6812 37.92 31.894C39.3007 29.4598 40.0188 26.7061 40.0027 23.9077C39.9865 21.1092 39.2367 18.364 37.828 15.9459C36.4193 13.5278 34.401 11.5215 31.9746 10.1273C29.5482 8.73298 26.7985 7.99949 24 8ZM39.886 36.152C42.5601 32.6659 44.0065 28.3935 44 24C44 12.954 35.046 4 24 4C12.954 4 4.00002 12.954 4.00002 24C3.99342 28.3936 5.43983 32.666 8.11402 36.152L8.10402 36.188L8.81402 37.014C10.6898 39.207 13.0188 40.9672 15.6405 42.1733C18.2622 43.3793 21.1142 44.0026 24 44C28.0547 44.0075 32.0148 42.7758 35.35 40.47C36.7719 39.4876 38.0612 38.326 39.186 37.014L39.896 36.188L39.886 36.152ZM24 12C22.4087 12 20.8826 12.6321 19.7574 13.7574C18.6322 14.8826 18 16.4087 18 18C18 19.5913 18.6322 21.1174 19.7574 22.2426C20.8826 23.3679 22.4087 24 24 24C25.5913 24 27.1174 23.3679 28.2427 22.2426C29.3679 21.1174 30 19.5913 30 18C30 16.4087 29.3679 14.8826 28.2427 13.7574C27.1174 12.6321 25.5913 12 24 12Z" fill="black"/>
+                      </svg>
+                </a>         
+        </div>
+    </header>
+    
+    <!-- Sidebar dengan menu navigasi -->
+    <div class="main">
+    <div class="sidebar">
+        <h1 id = "sislab">SISLAB</h1>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <img src="../assets/Orange.png" alt="" style="margin-left: 30%;">
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="/portofolio" class=" ">
+                        <img src="../assets/tambah_porto.png" alt="" style="margin-right: 1px;">
+                        Kelola surat
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="/kategori" class=" ">
+                        <img src="../assets/kelola_kategori.png" alt="" style="margin-right: 1px;">
+                        Disposisi Surat  
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="/testimoni" class=" ">
+                        <img src="../assets/testimoni.png" alt="" style="margin-right: 1px;">
+                        Testimoni
+                    </a>
+                </li>
+                <li id="bottomNav" class="sidebar-list-item">
+                    <a type="button" class="nav-link not link-light mt-1" id="logoutNav">
+                        <div class="logout-container">
+                            <img src="../assets/logout.png" alt="" style="margin-right: 0px;">
+                            <span>Log out</span>
+                        </div>
+                    </a>
+                </li>
             </ul>
-        </div>
-
-        <!-- Konten utama dengan bagian profil -->
-        <div class="content">
-            <div class="profile-section">
-                <!-- Input field untuk nama lengkap -->
-                <label for="username">Nama Lengkap:</label>
-                <input type="text" placeholder=".....................................................................................">
-
-                <!-- Input field untuk nomor induk mahasiswa (NIM) -->
-                <label for="nim">Nomor Induk Mahasiswa (NIM):</label>
-                <input type="text" placeholder=".....................................................................................">
-
-                <!-- Input field untuk alamat -->
-                <label for="alamat">Alamat:</label>
-                <input type="text" placeholder=".....................................................................................">
-
-                <!-- Area untuk mengunggah tanda tangan -->
-                <div class="signature-area">Pilih file untuk tanda tangan</div>
-
-                <!-- Input field untuk password lama dan baru -->
-                <div class="password-inputs">
-                    <label for="password_lama">Password Lama:</label>
-                    <input type="password" placeholder=".....................................................................................">
-                    <label for="password_baru">Password Baru:</label>
-                    <input type="password" placeholder=".....................................................................................">
-                </div>
-            </div>
-
-            <!-- Tombol log out -->
-            <button class="logout-button">Log Out</button>
-        </div>
     </div>
+
+    <!-- Formulir untuk menampilkan profil pengguna -->
+    <div class="form-container">
+    <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"readonly>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
+          <input type="password" class="form-control" id="exampleInputPassword1"readonly>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="password" class="form-control" id="exampleInputPassword1"readonly>
+        </div>
+        <div class="mb-3">
+            <label>No Telp</label>
+            <input type="password" class="form-control" id="exampleInputPassword1"readonly>
+        </div>
+        <div class="mb-3">
+            <label>Alamat</label>
+            <input type="password" class="form-control" id="exampleInputPassword1"readonly>
+        </div>
+        <!-- <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Pilih</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>   --> 
+        <!-- Dropdown untuk memilih tanda tangan -->
+        <label for="signature-select" class="form-label" style="margin-bottom: 0;">Pilih tanda tangan</label>
+        <select class="form-select form-select-sm" aria-label="Small select example" id = "select" disabled>
+            <option selected>Pilih tanda tangan</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <div class = "iv">
+            Preview akan tampil disini
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 5%;">
+                <label for="passwordInput">Password</label>
+            </div>
+            <div class="col-md-3" style="margin-top: 2%;">
+                <input type="password" class="form-control" id="passwordInput" placeholder="" aria-label="password" style="font-size: 10px;" readonly>
+            </div>
+            <div class="col-md-9" style="margin-top: 2%;">
+                <a href="#">Edit Password</a>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-left:80%; width: 20%; margin-top: 1%;" >Edit Profil</button>
+    </form>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
