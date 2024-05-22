@@ -1,5 +1,5 @@
 const modeluser = require('../models/user')
-
+require('dotenv').config()
 const {
     or,
     where
