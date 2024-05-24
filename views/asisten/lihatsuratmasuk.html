@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihat Surat Masuk</title>
+    <link rel="stylesheet" href="/public/css/lihatsuratmasuk.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>SISMI</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Kelola Surat Masuk</a></li>
+                    <li><a href="#">Kelola Surat Keluar</a></li>
+                    <li><a href="#">Disposisi Surat</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href="#">Log Out</a>
+            </div>
+        </aside>
+        <main class="content">
+            <header>
+                <h2>Lihat Surat</h2>
+                <div class="user-profile">
+                    <span>Nadini Annisa Byant</span>
+                    <div class="user-icon">
+                        <img src="user-icon.png" alt="User Icon">
+                    </div>
+                </div>
+            </header>
+            <section class="view-surat">
+                <form>
+                    <label for="nama-surat">Nama Surat</label>
+                    <input type="text" id="nama-surat" name="nama-surat" value="Surat Keputusan Departemen" readonly>
+                    <div class="pdf-viewer">
+                        <iframe src="your-pdf-file.pdf" frameborder="0"></iframe>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
