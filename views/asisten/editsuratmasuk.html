@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISMI - Edit Surat Masuk</title>
+    <link rel="stylesheet" href="/public/css/editsuratmasuk.css"> 
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>SISMI</h2>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Kelola Surat Masuk</a></li>
+                    <li><a href="#">Kelola Surat Keluar</a></li>
+                    <li><a href="#">Disposisi Surat</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href="#">Log Out</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="user-info">
+                    <p>User</p>
+                    <span class="user-icon">👤</span>
+                </div>
+            </header>
+            <section class="content">
+                <h1>Edit Surat Masuk</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="nama-surat">Nama Surat</label>
+                        <input type="text" id="nama-surat" value="Surat Keputusan Departemen">
+                    </div>
+                    <div class="form-group">
+                        <label for="file-surat">File Surat <span class="file-format">(.pdf)</span></label>
+                        <div class="pdf-preview">
+                            <iframe src="sample.pdf" width="100%" height="300px"></iframe>
+                        </div>
+                        <input type="file" id="file-surat">
+                    </div>
+                    <button type="submit" class="btn-save">Simpan Surat</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
