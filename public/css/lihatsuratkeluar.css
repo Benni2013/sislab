@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lobster';
+}    
+
+.main {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.inmain {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(160deg, #ffffff 5.41%, #0735bd 95.92%);
+    border-radius: 0 3% 3% 0;
+}  
+
+.menu {
+    margin-left: 15%;
+}
+
+.menu a {
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+
+#bot {
+    margin-top: 50%;
+}
+
+.containerLihatSurat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-label {
+    width: 100%;
+    text-align: left;
+}
+
+.pdf-viewer {
+    flex: 1;
+    width: 100%;
+}
+
+li {
+    transition: background-color 1s ease, color 1s ease, transform 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: navy;
+    cursor: pointer;
+    height: 55px;
+    width: 370px;
+    transform: scale(1.1);
+    border-radius: 50px;
+}
+
+.side {
+    color: #ffffff !important;
+}
+
+.side img {
+    filter: invert(100%);
+}
