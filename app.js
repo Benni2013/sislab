@@ -26,7 +26,9 @@ app.use('/public',express.static(path.join(__dirname, 'public')));
 app.use('/', server.changePass);
 app.use('/', server.editprofil);
 app.use('/', server.lihatprofil);
-app.use('/', server.login)
+app.use('/', server.login);
+
+app.use('/', server.admin); // router admin
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
