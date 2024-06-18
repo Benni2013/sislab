@@ -108,7 +108,7 @@ const lupaPassword = async (req, res) => {
 
     // algoritma ganti password jika lupa password
 
-    return res.redirect('/login'); // utk saat ini langsung di redirect ke login page
+    return res.redirect('/'); // utk saat ini langsung di redirect ke login page
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Terjadi kesalahan server" });

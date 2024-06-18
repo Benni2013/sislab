@@ -19,12 +19,14 @@ const LDK = require('./mahasiswa/kelola/landingPageKel')
 const editSurat = require('./mahasiswa/kelola/editSurat')
 const addSurat = require('./mahasiswa/kelola/tambahSurat')
 
+const admin = require('./adminRoute')
 const server = {}
 
 server.changePass = changePass
 server.editprofil = editprofil
 server.login = login
 server.lihatprofil = lihatprofil
+
 // formulir mahasiswa
 server.LDF = LDF
 server.FTA = FTA
@@ -38,6 +40,9 @@ server.showSrt = showSrt
 server.LDK = LDK
 server.editSurat = editSurat
 server.addSurat = addSurat
+
+server.admin = admin
+
 
 
 module.exports = server
