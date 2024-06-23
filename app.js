@@ -21,10 +21,31 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/public',express.static(path.join(__dirname, 'public')));
 app.use('/', server.changePass);
 app.use('/', server.editprofil);
+app.use('/', server.lihatprofil);
+
+app.use('/login', server.login)
+// formulir mahasiswa
+app.use('/mahasiswa', server.LDF);
+app.use('/mahasiswa', server.FTA);
+app.use('/mahasiswa', server.FPR);
+// disposisi mahasiswa
+app.use('/mahasiswa', server.LDD);
+app.use('/mahasiswa', server.editDispo);
+app.use('/mahasiswa', server.addDispo);
+// kelola mahasiswa
+app.use('/mahasiswa', server.LDK);
+app.use('/mahasiswa', server.showSrt);
+app.use('/mahasiswa', server.editSurat);
+app.use('/mahasiswa', server.addSurat);
+
+app.use('/', server.login);
+
+app.use('/admin', server.admin);  // endpoint admin
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

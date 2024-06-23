@@ -1,3 +1,4 @@
+
 const modeluser = require('../models/user')
 
 const {
@@ -22,7 +23,7 @@ const editProfil = async (req, res) => {
         const id = 2
         const { nama, nomor_induk, alamat } = req.body;
 
-        console.log(nama, nomor_induk, alamat);
+        //console.log(nama, nomor_induk, alamat);
 
         const result = await modeluser.update({
             name : nama,
@@ -35,10 +36,15 @@ const editProfil = async (req, res) => {
         if (!result) {
             res.status(400).json({
                 message: "data gagal di update",
-               success: false
+                success: false
+                
             });
         }
-        return res.status(200).json({success: true, message: "data berhasil diupdate"})
+        return res.status(200).json({
+            success: true, 
+            message: "data berhasil diupdate"
+            
+        })
     } catch (error) {
         console.log("error", error);
         res.status(500).json({ message: error });
