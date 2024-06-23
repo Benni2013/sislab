@@ -19,7 +19,7 @@ const LDK = require('./mahasiswa/kelola/landingPageKel')
 const editSurat = require('./mahasiswa/kelola/editSurat')
 const addSurat = require('./mahasiswa/kelola/tambahSurat')
 
-const admin = require('./adminRoute')
+const admin = require('./admin/adminRoute')
 const server = {}
 
 server.changePass = changePass

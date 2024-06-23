@@ -44,6 +44,7 @@ app.use('/mahasiswa', server.addSurat);
 
 app.use('/', server.login);
 
+app.use('/admin', server.admin);  // endpoint admin
 
 
 // catch 404 and forward to error handler
