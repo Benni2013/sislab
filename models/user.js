@@ -4,7 +4,7 @@ const db = require('../config/dbconfig.js');
 const User = db.define('user', {
     id_user: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         primaryKey: true,
         autoIncrement: true
     },
@@ -22,7 +22,7 @@ const User = db.define('user', {
     },
     ttd: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     nomor_induk: {
         type: DataTypes.STRING,
@@ -30,7 +30,7 @@ const User = db.define('user', {
     },
     alamat: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     role: {
         type: DataTypes.STRING,

@@ -1,8 +1,8 @@
-const PeminjamanRuangan = require('./peminjamanRuangan');
-const PeminjamanTa = require('./peminjamanTa');
+const PeminjamanRuangan = require('./peminjamanruangan');
+const PeminjamanTa = require('./peminjamanta');
 const surat = require('./surat');
 const User = require('./user');
-const Disposisi = require('./user');
+const Disposisi = require('./disposisi');
 
 User.hasMany(PeminjamanRuangan, { foreignKey: 'id_user' });
 PeminjamanRuangan.belongsTo(User, { foreignKey: 'id_user' });
