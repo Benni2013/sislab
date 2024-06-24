@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Surat</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: #edf2f7;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            background-color: rgb(31, 41, 55);
+            color: #e2e8f0;
+            width: 256px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar .profile {
+            text-align: center;
+            padding: 16px 0;
+        }
+        .sidebar .profile .avatar {
+            background-color: #4a5568;
+            height: 96px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+        }
+        .sidebar nav a {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: inherit;
+            margin-bottom: 8px;
+        }
+        .sidebar nav a.active {
+            background-color: #4a5568;
+            color: #ffffff;
+        }
+        .sidebar nav a:hover {
+            background-color: #4a5568;
+        }
+        .main-content {
+            flex: 1;
+            padding: 24px;
+            background-color: #ffffff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a67d8;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #5a67d8;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin: 16px auto;
+        }
+        .form-container form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .form-container form .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container form .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        .form-container form .form-group input,
+        .form-container form .form-group textarea,
+        .form-container form .form-group select {
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #5a67d8;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+        .form-container form .form-group input:focus,
+        .form-container form .form-group textarea:focus,
+        .form-container form .form-group select:focus {
+            outline: none;
+            border-color: #5a67d8;
+            box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.3);
+        }
+        .form-container form .form-group textarea {
+            resize: vertical;
+        }
+        .form-container form .form-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .form-container form .form-actions button {
+            background-color: #5a67d8;
+            color: #ffffff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container form .form-actions button:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div>
+                <div class="profile">
+                    <div class="avatar"></div>
+                </div>
+                <nav>
+                    <a href="/suratmasuk" class="active">Kelola Surat Masuk</a>
+                    <a href="/suratkeluar">Kelola Surat Keluar</a>
+                    <a href="/disposisi">Disposisi Surat</a>
+                </nav>
+            </div>
+            <a href="/logout">Log Out</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Edit Surat</h1>
+            </div>
+            <div class="form-container">
+                <form action="/editSurat/<%= surat.id %>" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nomor_surat">Nomor Surat</label>
+                        <input type="text" id="nomor_surat" name="nomor_surat" value="<%= surat.nomor_surat %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="perihal">Perihal</label>
+                        <input type="text" id="perihal" name="perihal" value="<%= surat.perihal %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="agenda">Agenda</label>
+                        <textarea id="agenda" name="agenda" required><%= surat.agenda %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_event">Tanggal Event</label>
+                        <input type="date" id="tanggal_event" name="tanggal_event" value="<%= surat.tanggal_event.toISOString().split('T')[0] %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lampiran">Lampiran</label>
+                        <input type="file" id="lampiran" name="lampiran">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_penerima">Penerima</label>
+                        <select id="id_penerima" name="id_penerima" required>
+                            <option value="">Pilih Penerima</option>
+                            <% users.forEach(user => { %>
+                                <option value="<%= user.id %>" <%= user.id === surat.id_penerima ? 'selected' : '' %>><%= user.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Simpan Perubahan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

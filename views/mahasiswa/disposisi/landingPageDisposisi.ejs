@@ -102,13 +102,10 @@
                   <td id="ha"><%= surat.nama_surat %></td>
                   <td id="ha"><%= surat.lampiran %></td>
                   <td id="ha" style="display: flex;">
-                    <a href="#">
-                      <img src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                           alt="Edit" style="height: 27px; width: 27px; margin-right: 10px;">
-                    </a>
                     <a href="#" class="hapus-surat" data-id="<%= surat.id %>">
-                      <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png" alt="ikon" style="height: 27px; width: 27px;">
+                      <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png" alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
                     </a>
+                    
                     
                   </td>
                 </tr>
@@ -137,13 +134,35 @@
             cancelButtonText: 'Batal'
           }).then((result) => {
             if (result.isConfirmed) {
-              // Redirect ke route hapus surat jika dikonfirmasi
-              window.location.href = `/mahasiswa/hapusSurat/${suratId}`;
+              // Lakukan AJAX request untuk menghapus surat
+              $.ajax({
+                url: `/mahasiswa/hapusSuratDisposisi/${suratId}`,
+                method: 'GET',
+                success: function(response) {
+                  Swal.fire(
+                    'Surat Disposisi berhasil dihapus!',
+                    response.message,
+                    'success'
+                  ).then(() => {
+                    // Redirect atau reload halaman setelah berhasil
+                    window.location.href = '/mahasiswa/LDDisposisi';
+                  });
+                },
+                error: function(xhr) {
+                  Swal.fire(
+                    'Gagal!',
+                    'Terjadi kesalahan saat menghapus surat.',
+                    'error'
+                  );
+                }
+              });
             }
           });
         });
       });
       </script>
+      
+      
       
 </body>
 </html>

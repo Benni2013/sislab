@@ -51,8 +51,31 @@ const hapusSurat = async (req, res) => {
 };
 
 
+const hapusSuratDisposisi = async (req, res) => {
+  try {
+    const id_surat = req.params.id_surat; // Mengambil id_surat dari parameter URL
+    const foundSurat = await Disposisi.findOne({ where: { id_surat: id_surat } });
+
+    if (!foundSurat) {
+      return res.status(404).json({ message: "Surat not found" });
+    }
+
+    // Hapus surat dari database
+    await foundSurat.destroy();
+
+    // Beri respons berhasil dihapus
+    res.redirect('/mahasiswa/LDDisposisi');
+
+  } catch (error) {
+    console.error("Error saat menghapus surat:", error);
+    res.status(500).json({ message: "Terjadi kesalahan saat menghapus surat" });
+  }
+};
+
+
 
 module.exports = {
   showLDD,
-  hapusSurat
+  hapusSurat,
+  hapusSuratDisposisi
 };

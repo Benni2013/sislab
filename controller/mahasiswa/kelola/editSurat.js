@@ -6,6 +6,7 @@ const surat = require('../../../models/surat')
 const Disposisi = require('../../../models/disposisi')
 const user = require('../../../models/user')
 const bcrypt = require("bcrypt");
+
 const controller = {};
 
 const editSurat = async (req, res) => {
@@ -25,33 +26,38 @@ const editSurat = async (req, res) => {
 };
 
 
+// Controller updateSurat
 const updateSurat = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { nama_surat } = req.body;
+  const id = req.params.id;
 
+  try {
+    // Cari surat berdasarkan id
     const foundSurat = await surat.findByPk(id);
 
     if (!foundSurat) {
       return res.status(404).json({ message: "Surat not found" });
     }
 
-    // Update nama_surat jika ada perubahan
-    if (nama_surat) {
-      foundSurat.nama_surat = nama_surat;
+    // Pastikan nama_surat tidak null atau undefined
+    if (!req.body.nama_surat) {
+      return res.status(400).json({ message: "Nama surat cannot be null" });
     }
 
-    // Handle upload file lampiran
+    // Update data surat berdasarkan input dari form
+    foundSurat.nama_surat = req.body.nama_surat;
+
+    // Cek apakah ada lampiran yang diunggah
     if (req.file) {
-      foundSurat.lampiran = req.file.filename;
+      foundSurat.lampiran = req.file.filename; // filename disesuaikan dengan tempat penyimpanan file Anda
     }
 
     // Simpan perubahan surat
     await foundSurat.save();
 
-    res.redirect("/mahasiswa/LDKelola");
+    // Redirect atau kirim respons sukses
+    res.status(200).json({ message: "Surat successfully updated" });
   } catch (error) {
-    console.log("error", error);
+    console.error('Error:', error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -98,6 +104,7 @@ const createDisposisi = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 
 

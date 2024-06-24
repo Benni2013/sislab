@@ -120,7 +120,7 @@
                       <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png" alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
                     </a>
 
-                    <a href="/mahasiswa/lihatSurat" class="" data-id="<%= surat.id %>">
+                    <a href="/mahasiswa/lihatSurat/<%= surat.id %>" >
                       <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-256.png" alt="ikon" style="height: 32px; width: 32px;">
                     </a>
                   </td>
@@ -135,7 +135,7 @@
         $('.hapus-surat').on('click', function(e) {
           e.preventDefault();
           const suratId = $(this).data('id');
-    
+      
           Swal.fire({
             title: 'Anda yakin?',
             text: "Anda tidak akan dapat mengembalikan tindakan ini!",
@@ -147,43 +147,76 @@
             cancelButtonText: 'Batal'
           }).then((result) => {
             if (result.isConfirmed) {
-              // Redirect ke route hapus surat jika dikonfirmasi
-              window.location.href = `/mahasiswa/hapusSurat/${suratId}`;
+              // Lakukan AJAX request untuk menghapus surat
+              $.ajax({
+                url: `/mahasiswa/hapusSurat/${suratId}`,
+                method: 'GET',
+                success: function(response) {
+                  Swal.fire(
+                    'Surat berhasil dihapus!',
+                    response.message,
+                    'success'
+                  ).then(() => {
+                    // Redirect atau reload halaman setelah berhasil
+                    window.location.href = '/mahasiswa/LDKelola';
+                  });
+                },
+                error: function(xhr) {
+                  Swal.fire(
+                    'Gagal!',
+                    'Terjadi kesalahan saat menghapus surat.',
+                    'error'
+                  );
+                }
+              });
             }
           });
         });
       });
-    </script>
+      </script>
     <script>
       $(document).ready(function() {
-  $('.disposisi-btn').click(function(e) {
-    e.preventDefault();
-
-    const suratId = $(this).data('surat-id');
-    const userId = <%= userId %>;
-    const penerimaId = <%= penerimaId %>;
-
-    $.ajax({
-      url: '/mahasiswa/disposisi',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        id_surat: suratId,
-        id_user: userId,
-        id_penerima: penerimaId
-      }),
-      success: function(response) {
-        alert('Disposisi created successfully!');
-        // Optionally handle success, e.g., update the UI
-      },
-      error: function(xhr, status, error) {
-        console.error('Error creating disposisi:', error);
-        alert('Failed to create disposisi. Please try again.');
-      }
-    });
-  });
-});
-    </script>
+        $('.disposisi-btn').click(function(e) {
+          e.preventDefault();
+      
+          const suratId = $(this).data('surat-id');
+          const userId = <%= userId %>;
+          const penerimaId = <%= penerimaId %>;
+      
+          $.ajax({
+            url: '/mahasiswa/disposisi',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              id_surat: suratId,
+              id_user: userId,
+              id_penerima: penerimaId
+            }),
+            success: function(response) {
+              Swal.fire({
+                title: 'Berhasil!',
+                text: 'Disposisi berhasil dibuat!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                // Optionally handle success, e.g., update the UI
+                location.reload(); // Contoh: Reload halaman setelah sukses
+              });
+            },
+            error: function(xhr, status, error) {
+              console.error('Error creating disposisi:', error);
+              Swal.fire({
+                title: 'Gagal!',
+                text: 'Gagal membuat disposisi. Silakan coba lagi.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        });
+      });
+      </script>
+      
 
   
 </html>
