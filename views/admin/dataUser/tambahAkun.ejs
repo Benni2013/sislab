@@ -36,38 +36,38 @@
 
             <!-- form tambah akun -->
             <div class="form">
-                <form action="#" method="post" onsubmit="return validateForm()">
+                <form action="/admin/data-akun/tambah-akun" method="post" onsubmit="return validateForm()">
                     <div class="form-group mb-3">
-                        <label for="nama"><strong>Nama Lengkap*</strong></label>
-                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                        <label for="name"><strong>Nama Lengkap*</strong></label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan nama lengkap" required>
 
-                        <label for="username"><strong>NIM/NIDN*</strong></label>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Masukkan NIM/NIDN" required>
+                        <label for="nomor_induk"><strong>NIM/NIDN*</strong></label>
+                        <input type="text" id="nomor_induk" name="nomor_induk" class="form-control" placeholder="Masukkan NIM/NIDN" required>
 
                         <label for="alamat"><strong>Alamat</strong></label>
-                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat" required>
+                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat">
 
                         <label for="email"><strong>Email*</strong></label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email" required>
 
                         <label for="role"><strong>Role*</strong></label>
                         <div class="jabatan-container">
-                            <input type="text" id="role" name="role" class="form-control" placeholder="Masukkan role" required disabled>
+                            <input type="text" id="role" name="role" class="form-control" placeholder="Masukkan role" required>
                             <button type="button" class="dropdown-toggle" onclick="toggleDropdown()"></button>
                             <div id="dropdown-menu" class="dropdown-menu">
-                                <div class="dropdown-item" onclick="selectJabatan('Mahasiswa')">Mahasiswa</div>
-                                <div class="dropdown-item" onclick="selectJabatan('Asisten')">Asisten</div>
-                                <div class="dropdown-item" onclick="selectJabatan('Koordinator Asisten')">Koordinator Asisten</div>
-                                <div class="dropdown-item" onclick="selectJabatan('Kepala Lab')">Kepala Lab</div>
+                                <div class="dropdown-item" onclick="selectJabatan('mahasiswa')">mahasiswa</div>
+                                <div class="dropdown-item" onclick="selectJabatan('asisten')">asisten</div>
+                                <div class="dropdown-item" onclick="selectJabatan('koordinator asisten')">koordinator asisten</div>
+                                <div class="dropdown-item" onclick="selectJabatan('kepala lab')">kepala lab</div>
                             </div>
                         </div>
 
                         <label for="ttd"><strong>Tanda Tangan</strong></label>
-                        <input type="file" id="ttd" name="ttd" class="form-control" placeholder="Masukkan file tanda tangan" required>
+                        <input type="file" id="ttd" name="ttd" class="form-control" placeholder="Masukkan file tanda tangan">
 
-                        <label for="password"><strong>Password*</strong></label>
+                        <label for="pass"><strong>Password*</strong></label>
                         <div class="relative">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                            <input type="password" id="pass" name="pass" class="form-control" placeholder="Masukkan password" required>
                             <span class="absolute inset-y-0 right-0 pr-0 flex items-center text-sm leading-5 password-toggle" onclick="togglePassword()">
                                 <svg class="h-8 w-8 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path>
@@ -117,7 +117,7 @@
         });
         
         function togglePassword() {
-            var passwordInput = document.getElementById('password');
+            var passwordInput = document.getElementById('pass');
             var eyeIcon = document.querySelector('.password-toggle');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
@@ -129,7 +129,7 @@
         }
     
         function validateForm() {
-            var newPassword = document.getElementById('password').value;
+            var newPassword = document.getElementById('pass').value;
             var confirmNewPassword = document.getElementById('konPass').value;
             var errorMessage = document.getElementById('error-message');
     

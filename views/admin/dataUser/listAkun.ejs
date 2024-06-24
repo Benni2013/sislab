@@ -51,32 +51,34 @@
 
                     <tbody>
                         <!-- row 1 -->
+                        <% let no = 1; %> 
+                        <% allUser.forEach(user => { %>
                         <tr>
-                              <th id="ha">1</th>
-                              <td id="ha">1111</td>
-                              <td id="ha">Benni</td>
-                              <td id="ha">Asisten</td>
+                              <th id="ha"><%= no++ %></th>
+                              <td id="ha"><%= user.nomor_induk %></td>
+                              <td id="ha"><%= user.name %></td>
+                              <td id="ha"><%= user.role %></td>
                               <td id="ha" class="aksi">
-                                <a href="/admin/data-akun/lihat-akun">
+                                <a href="/admin/data-akun/lihat-akun/<%= user.id_user %>">
                                     <img
                                   src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
                                   alt="lihat" id="ikon-aksi">
                                 </a>
                             
-                                <a href="/admin/data-akun/edit-akun">
+                                <a href="/admin/data-akun/edit-akun/<%= user.id_user %>">
                                   <img
                                   src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
                                   alt="edit" id="ikon-aksi">
                                 </a>
                             
-                                <a href="#">
+                                <a onclick="confirmDelete(<%= user.id_user %>)">
                                   <img
                                   src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
                                   alt="hapus" id="ikon-aksi">
                                 </a>
                               </td>
                         </tr>
-
+                        <% }) %>
                     </tbody>
                 </table>
             </div>
@@ -85,6 +87,14 @@
         
     </div>
     
+
+    <script>
+        function confirmDelete(userId) {
+            if (confirm('Apakah Anda yakin ingin menghapus akun ini?')) {
+                window.location.href = `/admin/data-akun/hapus-akun/${userId}`;
+            }
+        }
+    </script>
 
 </body>
 </html>

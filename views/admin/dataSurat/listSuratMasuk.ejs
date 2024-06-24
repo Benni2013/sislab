@@ -31,9 +31,9 @@
             <!-- isi -->
             <div class="judul">
                 Daftar Surat Masuk
-                <div class="tombol">
-                    <a href="#" class="btn btn-primary" id="tombol-tambah" type="submit">Laporan Surat Masuk</a>
-                </div>
+                <!-- <div class="tombol">
+                    <a href="#" class="btn btn-primary" id="tombol-tambah" type="submit">Laporan Surat</a>
+                </div> -->
             </div>
 
             <div class="overflow-x-auto">
@@ -51,10 +51,12 @@
 
                     <tbody>
                         <!-- row 1 -->
+                        <% let no = 1; %> 
+                        <% allSurat.forEach(surat => { %>
                         <tr>
-                              <th id="ha">1</th>
-                              <td id="ha">Surat Keputusan Departemen</td>
-                              <td id="ha">Surat Keputusan.pdf</td>
+                              <th id="ha"><%= no++ %></th>
+                              <td id="ha"><%= surat.nama_surat %></td>
+                              <td id="ha"><%= surat.lampiran %></td>
                               <!-- <td id="ha">Asisten</td> -->
                               <td id="ha" class="aksi">
                                 <a href="/admin/data-surat/lihat-surat">
@@ -70,7 +72,7 @@
                                 </a>
                               </td>
                         </tr>
-
+                        <% }) %>
                     </tbody>
                 </table>
             </div>

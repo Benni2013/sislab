@@ -39,33 +39,33 @@
                     <div>
                         <div class="teks">
                             <h2>Nama Lengkap</h2>
-                            <p>Benni Putra Chaniago</p>
+                            <p><%= foundUser.name %></p>
                         </div>
     
                         <div class="teks">
                             <h2>NIM/NIDN</h2>
-                            <p>1111</p>
+                            <p><%= foundUser.nomor_induk %></p>
                         </div>
                     </div>
 
                     <div class="foto">
-                        <img src="" alt="Foto Profil">
+                        <img src="/assets/iconmonstr-user-20-240.png" alt="Foto Profil">
                     </div>
                 </div>
 
                 <div class="teks">
                     <h2>Alamat</h2>
-                    <p>Kab. Lima Puluh Kota</p>
+                    <p><%= foundUser.alamat %></p>
                 </div>
 
                 <div class="teks">
                     <h2>Email</h2>
-                    <p>benni@email.com</p>
+                    <p><%= foundUser.email %></p>
                 </div>
 
                 <div class="teks">
                     <h2>Role</h2>
-                    <p>Asisten</p>
+                    <p><%= foundUser.role %></p>
                 </div>
 
                 <div class="teks">
@@ -77,7 +77,7 @@
 
                 <div class="grup-tombol">
                     <a href="/admin/data-akun/list-akun" class="btn btn-primary" id="tombol-tambah">< Kembali</a>
-                    <a href="/admin/data-akun/edit-akun" class="btn btn-primary" id="tombol-tambah">Edit Data</a>
+                    <a href="/admin/data-akun/edit-akun/<%= foundUser.id_user %>" class="btn btn-primary" id="tombol-tambah">Edit Data</a>
                 </div>
 
             </div>

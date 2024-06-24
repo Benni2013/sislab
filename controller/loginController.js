@@ -63,7 +63,7 @@ controller.checklogin = async (req, res) => {
     if (foundUser.role === 'mahasiswa') {
       return res.redirect('/lihatprofil');
     } else if (foundUser.role === "admin") {
-      return res.redirect('/lihatprofil');
+      return res.redirect('/admin/dashboard');
     }
 
     res.status(200).send({ auth: true, token: token });
