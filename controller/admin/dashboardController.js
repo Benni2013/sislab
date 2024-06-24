@@ -1,4 +1,4 @@
-const modeluser = require('../models/user')
+// const modeluser = require('../../models/user')
 require('dotenv').config()
 const {
     or,
@@ -9,18 +9,10 @@ const bcrypt = require('bcrypt')
 const controller = {}
 const jwt = require('jsonwebtoken');
 
-const showSidebar = async (req, res) => {
-    try {
-        res.render('office/admin/template/sidebarAdmin')
-    } catch (error) {
-        console.log("error", error);
-        res.status(500).json({ message: error })
-    }
-}
 
 const showDashboard = async (req, res) => {
     try {
-        res.render('office/admin/dashboardAdmin')
+        res.render('admin/dashboardAdmin')
     } catch (error) {
         console.log("error", error);
         res.status(500).json({ message: error })
@@ -29,6 +21,5 @@ const showDashboard = async (req, res) => {
 
 
 module.exports = {
-    showSidebar,
     showDashboard
 }

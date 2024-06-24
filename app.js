@@ -51,6 +51,7 @@ app.use('/mahasiswa', server.addSurat);
 
 app.use('/', server.login);
 
+app.use('/admin', server.admin);  // endpoint admin
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500);

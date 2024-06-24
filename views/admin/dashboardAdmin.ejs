@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.15.0/dist/full.css" rel="stylesheet">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="utama">
+        <div class="sidebar">
+            <!-- memanggil sidebar  -->
+            <%- include('./template/sidebarAdmin.ejs') %>
+        </div>
+        
+        <div class="konten-utama">
+            <div class="profil">
+                <!-- logo profil -->
+                <%- include('./template/profil.ejs') %>
+            </div>
+            
+            <!-- isi -->
+            <div class="judul">
+                Dashboard
+                <!-- <div class="tombol">
+                    <a href="#" class="btn btn-primary" id="tombol-tambah" type="submit">+ Tombol</a>
+                </div> -->
+            </div>
+
+
+            <div class="container">
+                <div class="card">
+                    <a href="/admin/data-surat/surat-masuk">
+                        <div class="head-card">
+                            <img 
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik02IDE2aC01djZoMjJ2LTZoLTV2LTFoNnY4aC0yNHYtOGg2djF6bTE0IDJjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xem0tNy41LTE3djE0Ljg4NGw0LjczNi01LjcyNC43NjQuNjQ1LTUuOTc5IDcuMTk1LTYuMDIxLTcuMjA1Ljc2NS0uNjQ0IDQuNzM1IDUuNzMydi0xNC44ODNoMXoiLz48L3N2Zz4="
+                            class="ikon">
+                            <strong>Jumlah Surat Masuk</strong>
+                        </div> 
+                        <div class="isi-card">
+                            <strong>20 Surat</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="/admin/data-surat/surat-keluar">
+                        <div class="head-card">
+                            <img 
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik05IDE2aC04djZoMjJ2LTZoLTh2LTFoOXY4aC0yNHYtOGg5djF6bTExIDJjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xem0tNy41IDBoLTF2LTE0Ljg4M2wtNC43MzUgNS43MzItLjc2NS0uNjQ0IDYuMDIxLTcuMjA1IDUuOTc5IDcuMTk1LS43NjQuNjQ1LTQuNzM2LTUuNzI0djE0Ljg4NHoiLz48L3N2Zz4="
+                            class="ikon">
+                            <strong>Jumlah Surat Keluar</strong>
+                        </div> 
+                        <div class="isi-card">
+                            <strong>20 Surat</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="/admin/data-akun/list-akun">
+                        <div class="head-card">
+                            <img 
+                            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMy40NCAybC0uNDM5LTJoMTcuOTk0bC0uNDM5IDJoLTE3LjExNnptLTEuNDQgM2wtLjQzOS0yaDIwLjg3OWwtLjQ0IDJoLTIwem0xMC4wOTkgMTAuNzE2bC4wMDQuMjgzaC01LjkzOWwtLjA0OC0uMjkyYy0uMTMzLS43NzktLjE3Ny0xLjIyNC41ODItMS40My44NDItLjIyNyAxLjY4NC0uNDI5IDEuMTY4LTEuMjg5LTEuNjI3LTIuNTQ2LS44NDktMy45OS42MzQtMy45OSAxLjQ1NCAwIDIuNTE2IDEuMzkgMS4zNTUgMy45OS0uMzQ4Ljg1NC41IDEuMDU2IDEuNDAxIDEuMjg5LjgwMS4yMDguODM0LjY1NS44NDMgMS40Mzl6bTYuNjI4LTQuNzE2aC00Ljc4NGwtLjAyOCAxaDQuNjc1bC4xMzctMXptLjI3My0yaC01bC0uMDI4Ljk5OWg0Ljg5MmwuMTM2LS45OTl6bS0uNTQ4IDRoLTQuNTY2bC0uMDI5Ljk5OWg0LjQ1OWwuMTM2LS45OTl6bS0uMjczIDJoLTQuMzUxbC0uMDI4Ljk5OWg0LjI0MWwuMTM4LS45OTl6bTUuODIxIDNoLTI0bDIgNmgyMGwyLTZ6bS0yMC42MjUtMmwtMS4wODUtOC4wMDFoMTkuNDExbC0xLjExOSA4LjAwMWgyLjAyMWwxLjM5Ny0xMGgtMjRsMS4zNTYgMTBoMi4wMTl6Ii8+PC9zdmc+"
+                            class="ikon">
+                            <strong>Jumlah Pengguna</strong>
+                        </div> 
+                        <div class="isi-card">
+                            <strong>20 Pengguna</strong>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div class="head-card">
+                        <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTMuNzQ0IDhzMS41MjItOC0zLjMzNS04aC04LjQwOXYyNGgyMHYtMTNjMC0zLjQxOS01LjI0Ny0zLjc0NS04LjI1Ni0zem0uMjU2IDExaC04di0xaDh2MXptNC0zaC0xMnYtMWgxMnYxem0wLTNoLTEydi0xaDEydjF6bS0zLjQzMi0xMi45MjVjMi4yMDIgMS4xNzQgNS45MzggNC44ODMgNy40MzIgNi44ODEtMS4yODYtLjktNC4wNDQtMS42NTctNi4wOTEtMS4xNzkuMjIyLTEuNDY4LS4xODUtNC41MzQtMS4zNDEtNS43MDJ6Ii8+PC9zdmc+"
+                        class="ikon">
+                        <strong>Jumlah Disposisi</strong>
+                    </div> 
+                    <div class="isi-card">
+                        <strong>20 Disposisi</strong>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        
+    </div>
+    
+
+</body>
+</html>
