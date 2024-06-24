@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../../../controller/mahasiswa/formulir/formulirPR");
-// const middleware = require("../../../middleware/verifyToken");
+const verifyToken = require("../../../middleware/verifyToken");
 
-router.get("/formulirPR", /*middleware.verifyToken,*/ controller.showPR);
+router.get("/formulirPR", verifyToken, controller.showPR);
+router.post('/createFormulirPR', controller.saveFormulirPR);
 
-module.exports = router;
+module.exports = router; 

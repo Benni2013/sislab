@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controller/editprofil')
-const middleware = require('../middleware/verifyToken')
+const verifyToken = require('../middleware/verifyToken');
 
-router.get('/showeditProfil', middleware.verifyToken, controller.showEdit)
-router.post('/updateprofil', middleware.verifyToken, controller.editProfil)
+router.get('/showeditProfil', verifyToken, controller.showEdit)
+router.post('/updateprofil', verifyToken, controller.editProfil)
   
 module.exports = router;    

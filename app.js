@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const db = require('./config/dbconfig');
+const { User, PeminjamanRuangan } = require('./models/association');
+const registerRouter = require('./routes/register');
+const disposisiRoutes = require('./routes/mahasiswa/kelola/editSurat');
 const server = require('./routes/index')
 const bodyParser = require('body-parser');
 
 const app = express();
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,10 +32,13 @@ app.use('/', server.editprofil);
 app.use('/', server.lihatprofil);
 
 app.use('/login', server.login)
+app.use('/register', server.register);
 // formulir mahasiswa
 app.use('/mahasiswa', server.LDF);
 app.use('/mahasiswa', server.FTA);
 app.use('/mahasiswa', server.FPR);
+app.use('/mahasiswa', disposisiRoutes); // Prefix your routes
+
 // disposisi mahasiswa
 app.use('/mahasiswa', server.LDD);
 app.use('/mahasiswa', server.editDispo);
@@ -44,12 +51,26 @@ app.use('/mahasiswa', server.addSurat);
 
 app.use('/', server.login);
 
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500);
+  res.render('error', { message: err.message });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
+
+db.sync({ force: false })
+  .then(() => {
+    console.log('Database synchronized');
+  })
+  .catch((err) => {
+    console.error('Error synchronizing the database:', err);
+  });
 
 // error handler
 app.use(function(err, req, res, next) {

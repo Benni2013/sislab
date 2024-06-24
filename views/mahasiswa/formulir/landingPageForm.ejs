@@ -100,90 +100,32 @@
           <thead>
             <tr>
               <th id="hi">No</th>
-              <th id="hi">Nama Surat</th>
-              <th id="hi">File Surat</th>
-              <!-- <th id="hi">Aksi</th> -->
+              <th id="hi">Nama</th>
+              <th id="hi">Kegiatan</th>
+              <th id="hi">Jenis Surat</th>
+              <th id="hi">Status</th>
             </tr>
           </thead>
           <tbody>
-            <!-- row 1 -->
-            <tr>
-              <th id="ha">1</th>
-              <td id="ha">Cy Ganderton</td>
-              <td id="ha">Quality Control Specialist</td>
-              <!-- <td id="ha" style="display: flex;">
-            <a href="">
-                <img
-              src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-              alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-            </a>
-
-            <a href="">
-              <img
-              src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-              alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-            </a>
-            
-            <a href="">
-              <img
-              src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-              alt="ikon" style="height: 27px; width: 27px;">
-            </a>
-            </td> -->
-
-            </tr>
-            <!-- row 2 -->
-            <tr>
-              <th id="ha">2</th>
-              <td id="ha">Hart Hagerty</td>
-              <td id="ha">Desktop Support Technician</td>
-              <!-- <td id="ha" style="display: flex;">
-                <a href="">
-                  <img
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-                alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-              </a>
-
-              <a href="">
-                <img
-                src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-              </a>
-              
-              <a href="">
-                <img
-                src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-                alt="ikon" style="height: 27px; width: 27px;">
-                </td>
-              </a> -->
-              </td>
-            </tr>
-            <!-- row 3 -->
-            <tr>
-              <th id="ha">3</th>
-              <td id="ha">Brice Swyre</td>
-              <td id="ha">Tax Accountant</td>
-              <!-- <td id="ha" style="display: flex;">
-                <a href="">
-                  <img
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-                alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-              </a>
-
-              <a href="">
-                <img
-                src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-              </a>
-              
-              <a href="">
-                <img
-                src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-                alt="ikon" style="height: 27px; width: 27px;">
-                </td> -->
-              </a>
-              </td>
-            </tr>
+            <% let no = 1; %> <!-- Initialize row number -->
+            <% peminjamanRuangan.forEach(peminjaman => { %>
+              <tr>
+                <td id="ha"><%= no++ %></td> 
+                <td id="ha"><%= peminjaman.user.name %></td>
+                <td id="ha"><%= peminjaman.kegiatan %></td>
+                <td id="ha">Surat Ruangan</td>
+                <td id="ha">Disetujui</td>
+              </tr>
+            <% }) %>
+            <% peminjamanTa.forEach(peminjaman => { %>
+              <tr>
+                <td id="ha"><%= no++ %></td> 
+                <td id="ha"><%= peminjaman.user.name %></td>
+                <td id="ha"><%= peminjaman.kegiatan %></td>
+                <td id="ha">Surat Pengerjaan TA</td>
+                <td id="ha">Disetujui</td>
+              </tr>
+            <% }) %>
           </tbody>
         </table>
       </div>

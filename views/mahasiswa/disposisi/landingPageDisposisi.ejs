@@ -10,7 +10,8 @@
         <!-- Font -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       </head>
 <body>
     <div class="main">
@@ -77,13 +78,15 @@
         <div style="font-size: 32px; margin:5% 0 2% 4%; font-weight: 500; display: flex;">
           Semua Disposisi
           <div style="margin-left: 1.20%;">
+            <a href="/mahasiswa/LDKelola">
             <button class="btn btn-primary" style="background-color: rgb(25, 25, 190); width: 120%; margin-left: 670%;" type="submit">+ Tambah Surat</button>
+            </a>  
           </div>
         </div>
 
         <div class="overflow-x-auto">
-          <table class="table w-11/12 ml-16" >
-            <!-- head -->
+          <table class="table w-11/12 ml-16">
+            <!-- Headings -->
             <thead>
               <tr>
                 <th id="hi">No</th>
@@ -93,87 +96,54 @@
               </tr>
             </thead>
             <tbody>
-              <!-- row 1 -->
-              <tr>
-                <th id="ha">1</th>
-                <td id="ha">Cy Ganderton</td>
-                <td id="ha">Quality Control Specialist</td>
-                <td id="ha" style="display: flex;">
-              <a href="">
-                  <img
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-                alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-              </a>
-
-              <a href="">
-                <img
-                src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-              </a>
-              
-              <a href="">
-                <img
-                src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-                alt="ikon" style="height: 27px; width: 27px;">
-                </td>
-              </a>
-
-              </tr>
-              <!-- row 2 -->
-              <tr>
-                <th id="ha">2</th>
-                <td id="ha">Hart Hagerty</td>
-                <td id="ha">Desktop Support Technician</td>
-                <td id="ha" style="display: flex;">
-                  <a href="">
-                    <img
-                  src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-                  alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-                </a>
-  
-                <a href="">
-                  <img
-                  src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                  alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-                </a>
-                
-                <a href="">
-                  <img
-                  src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-                  alt="ikon" style="height: 27px; width: 27px;">
+              <% suratData.forEach(function(surat, index) { %>
+                <tr>
+                  <td id="ha"><%= index + 1 %></td>
+                  <td id="ha"><%= surat.nama_surat %></td>
+                  <td id="ha"><%= surat.lampiran %></td>
+                  <td id="ha" style="display: flex;">
+                    <a href="#">
+                      <img src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
+                           alt="Edit" style="height: 27px; width: 27px; margin-right: 10px;">
+                    </a>
+                    <a href="#" class="hapus-surat" data-id="<%= surat.id %>">
+                      <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png" alt="ikon" style="height: 27px; width: 27px;">
+                    </a>
+                    
                   </td>
-                </a>
-                </td>
-              </tr>
-              <!-- row 3 -->
-              <tr>
-                <th id="ha">3</th>
-                <td id="ha">Brice Swyre</td>
-                <td id="ha">Tax Accountant</td>
-                <td id="ha" style="display: flex;">
-                  <a href="">
-                    <img
-                  src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-eye-512.png"
-                  alt="ikon" style="height: 30px; width: 30px; margin-right: 10px;">
-                </a>
-  
-                <a href="">
-                  <img
-                  src="https://cdn1.iconfinder.com/data/icons/general-ui-outlined-thick/24/edit-512.png"
-                  alt="ikon" style="height: 27px; width: 27px; margin-right: 10px;">
-                </a>
-                
-                <a href="">
-                  <img
-                  src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-512.png"
-                  alt="ikon" style="height: 27px; width: 27px;">
-                  </td>
-                </a>
-                </td>
-              </tr>
+                </tr>
+              <% }); %>
             </tbody>
+            
+            
           </table>
         </div>
     </div>
+    
+    <script>
+      $(document).ready(function() {
+        $('.hapus-surat').on('click', function(e) {
+          e.preventDefault();
+          const suratId = $(this).data('id');
+      
+          Swal.fire({
+            title: 'Anda yakin?',
+            text: "Anda tidak akan dapat mengembalikan tindakan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus surat!',
+            cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Redirect ke route hapus surat jika dikonfirmasi
+              window.location.href = `/mahasiswa/hapusSurat/${suratId}`;
+            }
+          });
+        });
+      });
+      </script>
+      
 </body>
 </html>

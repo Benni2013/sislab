@@ -1,6 +1,7 @@
 const changePass = require('./changePass')
 const editprofil = require('./editprofil')
 const login = require('./login')
+const register = require('./register')
 const lihatprofil = require ('./lihatprofil')
 
 // formulir mahasiswa
@@ -25,6 +26,7 @@ const server = {}
 server.changePass = changePass
 server.editprofil = editprofil
 server.login = login
+server.register = register
 server.lihatprofil = lihatprofil
 
 // formulir mahasiswa
@@ -35,7 +37,7 @@ server.FPR = FPR
 server.LDD = LDD
 server.editDispo = editDispo
 server.addDispo = addDispo
-// kelola mahasiswa
+// kelola mahasiswa 
 server.showSrt = showSrt
 server.LDK = LDK
 server.editSurat = editSurat

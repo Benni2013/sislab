@@ -80,30 +80,33 @@
           Edit Surat
         </div>
         <div class="container mx-auto">
-          <form class="space-y-4">
+          <form class="space-y-4" action="/mahasiswa/editSurat/<%= surat.id %>" method="post" enctype="multipart/form-data">
             <div style="display: flex;">
-            <div class="w-11/12 mr-5 ml-8">
-              <label class="block text-xl font-medium text-blue-700 mb-2" for="NS">Nama Surat</label>
-              <input class="input input-bordered w-full border-black bg-white" type="text" id="NS" name="NS" />
+              <div class="w-11/12 mr-5 ml-8">
+                <label class="block text-xl font-medium text-blue-700 mb-2" for="NS">Nama Surat</label>
+                <input class="input input-bordered w-full border-black bg-white" type="text" id="NS" name="nama_surat" value="<%= surat.nama_surat %>" />
+              </div>
             </div>
+            
+            <div style="margin-left: 1%;">
+              <label for="pdf-viewer" class="block text-xl font-medium text-blue-700 mb-2 ml-9">File Surat (<span style="color: red;">.pdf</span>)</label>
             </div>
-          </form>  
-        </div>
-        
-        <div style="margin-left: 1%;">
-        <label for="pdf-viewer" class="block text-xl font-medium text-blue-700 mb-2 ml-9">File Surat(<span style="color: red;">.pdf</span>)</label>
-        <div class="w-11/12 p-4 ml-10 bg-white shadow-lg rounded-lg">
-          <!-- <h1 class="text-2xl font-bold mb-4 text-center">File Surat</h1> -->
-          <iframe src="Instruksi-Pertemuan-2 Pratikum Data Mining 2024.pdf" class="w-full h-80 border border-gray-300 rounded-lg shadow-sm"></iframe>
-        </div>
-        </div>
-
-        <input type="file" class="file-input file-input-bordered border w-11/12 mt-3 ml-10" style="margin-left: 3.5%;" />
-
-        <div style="margin-left: 1.20%;">
-          <button class="btn btn-primary ml-10 mt-4" style="background-color: rgb(25, 25, 190); width: 15%;" type="submit">Kembali</button>
-        </div>
-      </form>
+          
+            <!-- Tambahkan iframe untuk menampilkan lampiran jika ada -->
+            <% if (surat.lampiran) { %>
+              <div class="mt-3 ml-10">
+                <iframe src="/uploads/<%= surat.lampiran %>" class="border border-gray-300 rounded-lg shadow-sm" style="width: 80%; height: 700px;"></iframe>
+              </div>
+            <% } %>
+          
+            <input type="file" name="lampiran" class="file-input file-input-bordered border w-11/12 mt-3 ml-10" style="margin-left: 3.5%;" />
+          
+            <div style="margin-left: 1.20%;">
+              <button class="btn btn-primary ml-10 mt-4" style="background-color: rgb(25, 25, 190); width: 15%;" type="submit">Save</button>
+            </div>
+          </form>
+          
+          
     </div>
 
 

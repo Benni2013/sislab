@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../../../controller/mahasiswa/disposisi/landingPageDisposisi");
-// const middleware = require("../../../middleware/verifyToken");
+const verifyToken = require("../../../middleware/verifyToken");
 
-router.get("/LDDisposisi", /*middleware.verifyToken,*/ controller.showLDD);
+router.get("/LDDisposisi", verifyToken, controller.showLDD);
+router.get("/hapusSurat/:id", verifyToken, controller.hapusSurat);
 
 module.exports = router;

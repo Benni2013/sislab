@@ -4,6 +4,8 @@ const { or, where } = require("sequelize");
 const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 const controller = {};
+const user = require('../../../models/user')
+const Disposisi = require('../../../models/disposisi')
 
 const addDispo = async (req, res) => {
   try {
@@ -13,6 +15,8 @@ const addDispo = async (req, res) => {
     res.status(500).json({ message: error });
   }
 };
+
+
 
 module.exports = {
     addDispo
