@@ -1,20 +1,12 @@
 const modeluser = require('../../models/user')
 const disposisi = require('../../models/disposisi')
 const surat = require('../../models/surat')
-require('dotenv').config()
-const {
-    or,
-    where
-} = require('sequelize');
-const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt')
-const controller = {}
-const jwt = require('jsonwebtoken');
+
 
 
 const showDashboard = async (req, res) => {
     try {
-        // panggil data akun
+   
         const id = req.user.id_user
 
         const akun = await modeluser.findOne({
@@ -27,10 +19,10 @@ const showDashboard = async (req, res) => {
           return res.status(400).json({success: false, messsage:"akun not found"})
         }
 
-        const jmlUser = 0 + await modeluser.count() // jml pengguna
-        const jmlDisposis = 0 + await disposisi.count() // jml disposisi
-        const jmlSM = 0 + await surat.count() // jml surat
-        const jmlSK = 0 + await surat.count() // jml surat
+        const jmlUser = await modeluser.count()
+        const jmlDisposis = await disposisi.count() 
+        const jmlSM = await surat.count()
+        const jmlSK = await surat.count()
 
         res.render('admin/dashboardAdmin', { akun, jmlUser, jmlDisposis , jmlSM, jmlSK })
     } catch (error) {

@@ -10,7 +10,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.15.0/dist/full.css" rel="stylesheet">
-    <!-- Font -->
+   
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -18,17 +18,17 @@
 <body>
     <div class="utama">
         <div class="sidebar">
-            <!-- memanggil sidebar  -->
+       
             <%- include('../template/sidebarAdmin.ejs') %>
         </div>
         
         <div class="konten-utama">
             <div class="profil">
-                <!-- logo profil -->
+        
                 <%- include('../template/profil.ejs') %>
             </div>
 
-            <!-- isi -->
+     
             <div class="judul">
                 Daftar Akun Pengguna
                 <div class="tombol">
@@ -38,7 +38,7 @@
 
             <div class="overflow-x-auto">
                 <table class="table w-11/12 ml-12" >
-                  <!-- head -->
+        
                     <thead>
                       <tr>
                         <th id="hi">No</th>
@@ -50,7 +50,7 @@
                     </thead>
 
                     <tbody>
-                        <!-- row 1 -->
+            
                         <% let no = 1; %> 
                         <% allUser.forEach(user => { %>
                         <tr>
