@@ -12,6 +12,6 @@ try {
     console.log('Koneksi database berhasil.');
 } catch (error) {
     console.error('Koneksi database tidak berhasil : ', error);
-}
+} 
 
 module.exports=db;

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Keluar</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+</head>
+<body class="bg-gray-200 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-gray-200 w-64 p-4 flex flex-col justify-between">
+            <div>
+                <div class="text-center py-4">
+                    <div class="bg-gray-700 h-24 mb-4 rounded-lg"></div>
+                </div>
+                <nav class="space-y-2">
+                    <a href="/suratmasuk" class="block py-2.5 px-4 rounded hover:bg-gray-700">Kelola Surat Masuk</a>
+                    <a href="/suratkeluar" class="block py-2.5 px-4 rounded hover:bg-gray-700">Kelola Surat Keluar</a>
+                    <a href="/disposisi" class="block py-2.5 px-4 rounded bg-gray-700 text-white">Disposisi Surat</a>
+                </nav>
+            </div>
+            <a href="/logout" class="block py-2.5 px-4 rounded hover:bg-gray-700">Log Out</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-6 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-2xl font-bold text-indigo-600">Disposisi surat</h1>
+            </div>
+            <div class="bg-white border border-indigo-500 rounded-lg shadow-lg p-6">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr>
+                            <th class="py-2">No</th>
+                            <th class="py-2">Nomor Surat</th>
+                            <th class="py-2">Pengirim</th>
+                            <th class="py-2">Penerima</th>
+                            <th class="py-2">Perihal</th>
+                            <th class="py-2">Agenda</th>
+                            <th class="py-2">Tanggal Event</th>
+                            <th class="py-2">Lampiran</th>
+                            <th class="py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% disposisis.forEach((disposisi, index) => { %>
+                            <tr class="border-b">
+                                <td class="px-4 py-2 text-center align-middle"><%= index + 1 %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.surat.nomor_surat %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.user.name %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.penerima.name %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.surat.perihal %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.surat.agenda %></td>
+                                <td class="px-4 py-2 text-center align-middle"><%= disposisi.surat.tanggal_event.toISOString().split('T')[0] %></td>
+                                <td class="px-4 py-2 text-center align-middle">
+                                    <% if (disposisi.surat.lampiran) { %>
+                                        <a href="/uploads/<%= disposisi.surat.lampiran %>" class="inline-block bg-green-500 hover:bg-green-700 text-white py-1 px-3 rounded-lg text-sm" download="/uploads/<%= disposisi.surat.lampiran %>">Download</a>
+                                        <a href="/uploads/<%= disposisi.surat.lampiran %>" class="inline-block bg-indigo-500 hover:bg-indigo-700 text-white py-1 px-3 rounded-lg text-sm">Preview</a>
+                                    <% } else { %>
+                                        Tidak Ada
+                                    <% } %>
+                                </td>
+                                <td class="py-2 flex gap-2">
+                                    <a href="#" class="delete-disposisi-btn text-red-500 hover:text-red-700 bg-red-200 hover:bg-red-500 rounded-lg p-2 w-10 h-10 flex items-center justify-center" data-id="<%= disposisi.id %>" title="Delete">
+                                        <i class="bi bi-trash3 text-white"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.delete-disposisi-btn').on('click', function(e) {
+            e.preventDefault();
+            const disposisiId = $(this).data('id');
+    
+            if (confirm('Are you sure you want to delete this disposisi?')) {
+                $.ajax({
+                    url: '/deleteDisposisi/' + disposisiId,
+                    method: 'DELETE',
+                    success: function(response) {
+                        alert('Disposisi deleted successfully');
+                        // Optionally, you can remove the row from the table or refresh the page
+                        location.reload(); // This will reload the page to reflect the deletion
+                    },
+                    error: function(error) {
+                        console.error('Error deleting disposisi:', error);
+                        alert('Failed to delete disposisi');
+                    }
+                });
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>

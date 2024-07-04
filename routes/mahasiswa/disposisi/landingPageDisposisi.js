@@ -4,6 +4,7 @@ const controller = require("../../../controller/mahasiswa/disposisi/landingPageD
 const verifyToken = require("../../../middleware/verifyToken");
 
 router.get("/LDDisposisi", verifyToken, controller.showLDD);
-router.get("/hapusSurat/:id", verifyToken, controller.hapusSurat);
+router.get("/hapusSuratDisposisi/:id_surat", verifyToken, controller.hapusSuratDisposisi);
+
 
 module.exports = router;

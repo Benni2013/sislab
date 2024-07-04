@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Surat</title>
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-gray-200 w-64 p-4 flex flex-col justify-between">
+            <div>
+                <div class="text-center py-4">
+                    <div class="bg-gray-700 h-24 mb-4 rounded-lg"></div>
+                </div>
+                <nav class="space-y-2">
+                    <a href="/suratmasuk" class="block py-2.5 px-4 rounded bg-gray-700 text-white">Kelola Surat Masuk</a>
+                    <a href="/suratkeluar" class="block py-2.5 px-4 rounded hover:bg-gray-700">Kelola Surat Keluar</a>
+                    <a href="/disposisi" class="block py-2.5 px-4 rounded hover:bg-gray-700">Disposisi Surat</a>
+                </nav>
+            </div>
+            <a href="/logout" class="block py-2.5 px-4 rounded hover:bg-gray-700">Log Out</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-6 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-2xl font-bold text-indigo-600">Tambah Surat</h1>
+            </div>
+            <div class="w-full m-4 mx-auto bg-white border border-indigo-500 rounded-lg shadow-lg p-6">
+                <form action="/tambahsurat" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="col-span-1">
+                        <label for="nomor_surat" class="block text-sm font-medium text-gray-700">Nomor Surat</label>
+                        <input type="text" id="nomor_surat" name="nomor_surat" class="p-2 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="perihal" class="block text-sm font-medium text-gray-700">Perihal</label>
+                        <input type="text" id="perihal" name="perihal" class="p-2 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="agenda" class="block text-sm font-medium text-gray-700">Agenda</label>
+                        <textarea id="agenda" name="agenda" class="p-1 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="tanggal_event" class="block text-sm font-medium text-gray-700">Tanggal Event</label>
+                        <input type="date" id="tanggal_event" name="tanggal_event" class="p-1 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+                    <div class="col-span-1">
+                        <label for="lampiran" class="block text-sm font-medium text-gray-700">Lampiran</label>
+                        <input type="file" id="lampiran" name="lampiran" class="p-1 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-2">
+                        <label for="id_penerima" class="block text-sm font-medium text-gray-700">Penerima</label>
+                        <select id="id_penerima" name="id_penerima" class="p-2 mt-1 block w-full border border-indigo-500 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            <option value="">Pilih Penerima</option>
+                            <% users.forEach(user => { %>
+                                <option value="<%= user.id %>"><%= user.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="col-span-2 flex justify-end">
+                        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Tambah Surat</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
