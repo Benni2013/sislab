@@ -10,7 +10,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.15.0/dist/full.css" rel="stylesheet">
-    <!-- Font -->
+ 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -18,25 +18,25 @@
 <body>
     <div class="utama">
         <div class="sidebar">
-            <!-- memanggil sidebar  -->
+    
             <%- include('../template/sidebarAdmin.ejs') %>
         </div>
         
         <div class="konten-utama">
             <div class="profil">
-                <!-- logo profil -->
+     
                 <%- include('../template/profil.ejs') %>
             </div>
             
-            <!-- isi -->
+     
             <div class="judul">
                 Lihat Akun Pengguna
             </div>
 
             <div class="form">
                 
-                <div class="kotak">
-                    <div>
+                <!-- <div class="kotak">
+                    <div> -->
                         <div class="teks">
                             <h2>Nama Lengkap</h2>
                             <p><%= foundUser.name %></p>
@@ -46,12 +46,9 @@
                             <h2>NIM/NIDN</h2>
                             <p><%= foundUser.nomor_induk %></p>
                         </div>
-                    </div>
+                    <!-- </div>
 
-                    <div class="foto">
-                        <img src="/assets/iconmonstr-user-20-240.png" alt="Foto Profil">
-                    </div>
-                </div>
+                </div> -->
 
                 <div class="teks">
                     <h2>Alamat</h2>
@@ -71,7 +68,7 @@
                 <div class="teks">
                     <h2>Tanda Tangan</h2>
                     <div class="signature-placeholder">
-                        <img src="" alt="Tanda Tangan">
+                        <img src="/assets/<%= foundUser.ttd %>" alt="Tanda Tangan">
                     </div>
                 </div>
 

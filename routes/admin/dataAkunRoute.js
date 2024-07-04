@@ -3,7 +3,7 @@ const router = express.Router()
 const dataAkun = require('../../controller/admin/dataAkunController')
 
 
-// data akun pengguna
+
 router.get('/list-akun', dataAkun.showListAkun);
 router.get('/lihat-akun/:id', dataAkun.showLihatAkun);
 router.get('/edit-akun/:id', dataAkun.showEditAkun);

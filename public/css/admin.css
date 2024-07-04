@@ -7,7 +7,7 @@
 }
 
 .sidebar {
-    /* height: 100%; */
+
     width: 25%;
     background: linear-gradient(150deg, #ffffff 10.41%, #1000c0 95.92%);
     border-radius: 0 3% 3% 0;
@@ -56,11 +56,10 @@ li {
 .sidebar ul li:hover {
     background-color: navy;
     cursor: pointer;
-    /* height: 55px;
-    width: 370px; */
+
     transform: scale(1.1);
     border-radius: 10px;
-    /* padding-top: 4%; */
+
 }
 
 .sidebar-responsive {
@@ -107,7 +106,7 @@ li {
     max-height: 100%;
 }
 
-/* Konten halaman */
+
 .konten-utama {
     display: flex;
     flex-direction: column;
@@ -116,7 +115,7 @@ li {
 }
 
 .judul {
-    /* background-color: blueviolet;  */
+
     font-size: 32px; 
     margin:5% 0 2% 4%; 
     font-weight: 500; 
@@ -131,12 +130,9 @@ li {
 }
 
 .tombol {
-    /* padding: 10px 20px; */
-    /* font-size: 1rem; */
-    /* background-color: #007bff; */
+
     color: white;
-    /* border: none; */
-    /* border-radius: 5px; */
+
     cursor: pointer;
     margin-right: 2%;
     margin-bottom: 10px;
@@ -151,27 +147,24 @@ li {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    /* gap: 24px; */
+
     width: 80%;
     max-width: 200px;
     height: 80%;
     max-height: 450px;
-    /* max-width: 600px; */
-    /* height: 80%; */
-    /* max-height: 600px; */
+
     padding-right: 30px;
     padding-left: 30px;
 }
 
 .card {
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
+
     background-color: white;
     border-radius: 25%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 1.5rem;
-    /* text-align: center; */
+
     cursor: pointer;
     max-width: 400px;
     margin: 2% 5%;
@@ -235,7 +228,7 @@ li {
 .form {
     margin-left: 15%;
     margin-right: 15%;
-    /* background-color: aqua; */
+
 }
 
 .form label {
@@ -298,21 +291,18 @@ li {
 }
 
 .kotak {
-    /* background-color: blueviolet; */
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: #d9d9d9; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+
 }
 
 .teks {
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 20px;
-    /* display: flex;
-    flex-direction: column;
-    gap: 10px; */
+
 }
 
 .teks h2 {
@@ -331,7 +321,7 @@ li {
     margin-right: 15%;
     width: 150px;
     height: 150px;
-    /* background-color: #274974; */
+
     border-radius: 50%;
     border: 2px solid #606060;
     display: flex;

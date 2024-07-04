@@ -1,17 +1,11 @@
 const modeluser = require('../../models/user')
-require('dotenv').config()
-const {
-    or,
-    where
-} = require('sequelize');
-const Sequelize = require('sequelize');
+
 const bcrypt = require('bcrypt')
-const controller = {}
-const jwt = require('jsonwebtoken');
+
 
 const showEditAkun = async (req, res) => {
     try {
-        // panggil data akun
+
         const id = req.user.id_user
 
         const akun = await modeluser.findOne({
@@ -35,7 +29,7 @@ const showEditAkun = async (req, res) => {
 
 const showLihatAkun = async (req, res) => {
     try {
-        // panggil data akun
+
         const id = req.user.id_user
         
         const akun = await modeluser.findOne({
@@ -59,7 +53,7 @@ const showLihatAkun = async (req, res) => {
 
 const showListAkun = async (req, res) => {
     try {
-        // panggil data akun
+
         const id = req.user.id_user
 
         const akun = await modeluser.findOne({
@@ -83,7 +77,7 @@ const showListAkun = async (req, res) => {
 
 const showTambahAkun = async (req, res) => {
     try {
-        // panggil data akun
+
         const id = req.user.id_user
 
         const akun = await modeluser.findOne({
@@ -106,7 +100,7 @@ const showTambahAkun = async (req, res) => {
 const editAkun = async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, nomor_induk, alamat, email, role, ttd, pass } = req.body;
+    const { name, nomor_induk, alamat, email, role, pass } = req.body;
 
     const salt = bcrypt.genSaltSync(10);
     const password = bcrypt.hashSync(pass, salt);
@@ -117,7 +111,6 @@ const editAkun = async (req, res) => {
         alamat : alamat,
         email : email,
         role : role,
-        ttd : ttd,
         password : password,
         updated_at: new Date(),
     }, {
@@ -142,7 +135,7 @@ const editAkun = async (req, res) => {
 
 const tambahAkun  = async (req, res) => {
   try {
-    let { name, nomor_induk, alamat, email, role, ttd, pass } = req.body;
+    let { name, nomor_induk, alamat, email, role, pass } = req.body;
 
     if (!name || !nomor_induk || !email || !role || !pass) {
         return res.status(400).send('Semua bidang wajib diisi');
@@ -156,7 +149,6 @@ const tambahAkun  = async (req, res) => {
         name,
         email,
         password,
-        ttd,
         nomor_induk,
         alamat,
         role,
@@ -189,10 +181,10 @@ const hapusAkun = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Hapus surat dari database
+
     await foundUser.destroy();
 
-    // Beri respons berhasil dihapus
+
     res.redirect('/admin/data-akun/list-akun')
 
   } catch (error) {
